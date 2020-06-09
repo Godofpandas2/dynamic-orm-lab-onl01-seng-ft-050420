@@ -40,13 +40,13 @@ class InteractiveRecord
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM #{table_name_for_insert}")[0][0]
   end
 
-  def self.find_by_name
+  def self.find_by_name(name)
     DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE name = ?", name)
   end
 
-  def self.find_by
-    key = attr.keys[0].to_s
-    value = attr.values[0]
+  def self.find_by(attribute)
+    key = attribute.keys[0].to_s
+    value = attribute.values[0]
     DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{key} = ?", value)
   end
 end
