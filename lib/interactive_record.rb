@@ -20,7 +20,7 @@ class InteractiveRecord
   end
 
   def table_name_for_insert
-    self.class.column_names.delete_if{|column| column == "id"}.join(",")
+    self.class.column_names.delete_if{|column| column == "id"}.join(", ")
   end
 
 end
