@@ -19,4 +19,8 @@ class InteractiveRecord
     options.each {|property, value| self.instance_variable_set("@#{property}", value)}
   end
 
+  def table_name_for_insert
+    self.class.column_names.delete_if{|column| column == "id"}.join(",")
+  end
+
 end
